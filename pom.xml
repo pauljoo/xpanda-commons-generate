@@ -4,11 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>info.xpanda.cbb.generate</groupId>
-    <artifactId>xpanda-cbb-generate</artifactId>
+    <groupId>info.xpanda.commons</groupId>
+    <artifactId>xpanda-commons-generate</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>xpanda-cbb-generate-core</module>
+        <module>xpanda-commons-generate-core</module>
+        <module>xpanda-commons-generate-engine</module>
+        <module>xpanda-commons-generate-model</module>
+        <module>xpanda-commons-generate-template</module>
     </modules>
 </project>
