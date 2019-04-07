@@ -12,12 +12,11 @@ import info.xpanda.commons.generate.engine.template.FreemarkerGenerateTemplate;
 import info.xpanda.commons.generate.engine.template.GenerateTemplate;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Template + Data = Code
  */
-public class StandardGenerator implements Generator{
+public class StandardGenerator extends AbstractGenerator{
 	private Configuration configuration;
 
 

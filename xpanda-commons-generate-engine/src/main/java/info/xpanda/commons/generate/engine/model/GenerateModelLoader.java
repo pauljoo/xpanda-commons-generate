@@ -6,7 +6,7 @@ import java.util.List;
  * description:
  * copyright:
  *
- * @author Paul Joo
+ * @author Paul Jiang
  * @since 20190405
  */
 public interface GenerateModelLoader {
