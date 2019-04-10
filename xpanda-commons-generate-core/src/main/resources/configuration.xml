@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration PUBLIC "-//Huiyao Jiang//DTD Configuration 0.1//EN" "./configuration.dtd">
-<configuration>
-	<settings>
-		<setting name="globalPackageName" value="info.xpanda.demo"/>
-	</settings>
-	<template sourceDirectory="D:\code\simple" targetDirectory="D:\code\target"/>
-</configuration>

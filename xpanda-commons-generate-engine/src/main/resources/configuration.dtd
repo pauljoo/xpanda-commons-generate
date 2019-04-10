@@ -1,0 +1,11 @@
+<!ELEMENT configuration (settings?,modelLoader,templateProcessor)>
+<!ELEMENT settings (setting+)>
+<!ELEMENT setting (#PCDATA)>
+<!ELEMENT modelLoader (setting+)>
+<!ELEMENT templateProcessor (setting+)>
+
+<!ATTLIST setting name CDATA #REQUIRED>
+<!ATTLIST setting value CDATA #REQUIRED>
+
+<!ATTLIST modelLoader clazz CDATA #REQUIRED>
+<!ATTLIST templateProcessor clazz CDATA #REQUIRED>

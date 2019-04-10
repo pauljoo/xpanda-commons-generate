@@ -9,9 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>xpanda-commons-generate-core</module>
         <module>xpanda-commons-generate-engine</module>
-        <module>xpanda-commons-generate-model</module>
-        <module>xpanda-commons-generate-template</module>
     </modules>
 </project>

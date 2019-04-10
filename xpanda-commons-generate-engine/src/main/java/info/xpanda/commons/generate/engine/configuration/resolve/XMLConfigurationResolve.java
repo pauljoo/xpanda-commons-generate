@@ -1,8 +1,7 @@
 package info.xpanda.commons.generate.engine.configuration.resolve;
 
+import info.xpanda.commons.generate.engine.configuration.*;
 import info.xpanda.commons.generate.engine.configuration.Configuration;
-import info.xpanda.commons.generate.engine.configuration.NameValuePair;
-import info.xpanda.commons.generate.engine.configuration.TemplateConfiguration;
 import org.apache.commons.digester3.Digester;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
@@ -26,14 +25,28 @@ public class XMLConfigurationResolve implements ConfigurationResolve{
 //		digester.setValidating(true);
 		
 		digester.addObjectCreate("configuration", Configuration.class);
+
+		digester.addObjectCreate("configuration/settings", SettingsConfiguration.class);
+		digester.addSetProperties("configuration/settings");
+		digester.addSetNext("configuration/settings", "setSettings");
 		digester.addObjectCreate("configuration/settings/setting", NameValuePair.class);
 		digester.addSetProperties("configuration/settings/setting");
 		digester.addSetNext("configuration/settings/setting", "addSetting");
-		
-		digester.addObjectCreate("configuration/template", TemplateConfiguration.class);
-		digester.addSetProperties("configuration/template");
-		digester.addSetNext("configuration/template", "setTemplate");
-		
+
+		digester.addObjectCreate("configuration/modelLoader", ModelLoaderConfiguration.class);
+		digester.addSetProperties("configuration/modelLoader");
+		digester.addSetNext("configuration/modelLoader", "setModelLoader");
+		digester.addObjectCreate("configuration/modelLoader/setting", NameValuePair.class);
+		digester.addSetProperties("configuration/modelLoader/setting");
+		digester.addSetNext("configuration/modelLoader/setting", "addSetting");
+
+		digester.addObjectCreate("configuration/templateProcessor", TemplateProcessorConfiguration.class);
+		digester.addSetProperties("configuration/templateProcessor");
+		digester.addSetNext("configuration/templateProcessor", "setTemplateProcessor");
+		digester.addObjectCreate("configuration/templateProcessor/setting", NameValuePair.class);
+		digester.addSetProperties("configuration/templateProcessor/setting");
+		digester.addSetNext("configuration/templateProcessor/setting", "addSetting");
+
 		File file = new File(filePath);
 		if(null != file && file.isFile()){
 			try {

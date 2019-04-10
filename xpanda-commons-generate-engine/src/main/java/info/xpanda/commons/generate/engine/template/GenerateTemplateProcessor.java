@@ -8,9 +8,9 @@ import java.util.List;
  * description:
  * copyright:
  *
- * @author jianghuiyao
+ * @author Paul Joo
  * @since 20190302
  */
-public interface GenerateTemplate {
-    String process(List<GenerateModel> models);
+public interface GenerateTemplateProcessor {
+    String process(List<GenerateModel> modelList);
 }

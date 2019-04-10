@@ -1,9 +1,10 @@
-package info.xpanda.commons.generate.engine.template;
-
+package info.xpanda.commons.generate.engine.template.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import info.xpanda.commons.generate.engine.configuration.ConfigurationHolder;
 import info.xpanda.commons.generate.engine.model.GenerateModel;
+import info.xpanda.commons.generate.engine.template.GenerateTemplateProcessor;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -17,11 +18,11 @@ import java.util.*;
  * description:
  * copyright:
  *
- * @author jianghuiyao
+ * @author Paul Joo
  * @since 20190302
  */
-public class FreemarkerGenerateTemplate implements GenerateTemplate {
-    private String templateDirectory;
+public class FreemarkerGenerateTemplateProcessor implements GenerateTemplateProcessor {
+    private String sourceDirectory;
 
     private String targetDirectory;
 
@@ -29,9 +30,9 @@ public class FreemarkerGenerateTemplate implements GenerateTemplate {
 
     private List<String> templateNames = new ArrayList<>();
 
-    public FreemarkerGenerateTemplate(String templateDirectory, String targetDirectory) {
-        this.templateDirectory = templateDirectory;
-        this.targetDirectory = targetDirectory;
+    public FreemarkerGenerateTemplateProcessor() {
+        this.sourceDirectory = ConfigurationHolder.getConfiguration().getTemplateProcessor().getSettings().get("sourceDirectory");
+        this.targetDirectory = ConfigurationHolder.getConfiguration().getTemplateProcessor().getSettings().get("targetDirectory");
     }
 
     public void init(){
@@ -45,13 +46,13 @@ public class FreemarkerGenerateTemplate implements GenerateTemplate {
             //加载Freemarker
             cfg = new Configuration(Configuration.VERSION_2_3_23);
             //设定去哪里读取相应的ftl模板文件
-            cfg.setDirectoryForTemplateLoading(new File(templateDirectory));
+            cfg.setDirectoryForTemplateLoading(new File(sourceDirectory));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     private void initTemplateNames(){
-        File templateDirectoryFile = new File(templateDirectory);
+        File templateDirectoryFile = new File(sourceDirectory);
         String[] extensions = new String[]{"ftl"};
         Collection<File> templateFiles = FileUtils.listFiles(templateDirectoryFile, extensions, true);
 
@@ -65,10 +66,10 @@ public class FreemarkerGenerateTemplate implements GenerateTemplate {
         }
     }
     @Override
-    public String process(List<GenerateModel> models) {
+    public String process(List<GenerateModel> modelList) {
         init();
 
-        for(GenerateModel model : models){
+        for(GenerateModel model : modelList){
             for(String templateName : templateNames){
                 //在模板文件目录中找到名称为name的文件
                 try {
@@ -85,15 +86,15 @@ public class FreemarkerGenerateTemplate implements GenerateTemplate {
         return null;
     }
 
-    private File resolveTargetFile(Template template, GenerateModel model){
+    private File resolveTargetFile(Template template, Map<String, String> dataModel){
         String fullPath = targetDirectory + File.separator + template.getName();
         fullPath = StringUtils.substringBeforeLast(fullPath, ".");
         String[] tags = StringUtils.substringsBetween(fullPath, "${", "}");
         if(tags != null && tags.length > 0){
             Set<String> setTag = new HashSet<String>(Arrays.asList(tags));
             for(String tag : setTag){
-                if(model.containsKey(tag)){
-                    fullPath = StringUtils.replace(fullPath, "${" + tag + "}", model.get(tag));
+                if(dataModel.containsKey(tag)){
+                    fullPath = StringUtils.replace(fullPath, "${" + tag + "}", dataModel.get(tag));
                 }
             }
         }
