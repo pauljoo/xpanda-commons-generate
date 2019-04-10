@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//Huiyao Jiang//DTD Configuration 0.1//EN" "./configuration.dtd">
+<configuration>
+	<modelLoader clazz="info.xpanda.commons.generate.engine.model.local.LocalGenerateModelLoader">
+		<setting name="path" value="D:\code\model.json"/>
+	</modelLoader>
+	<templateProcessor clazz="info.xpanda.commons.generate.engine.template.freemarker.FreemarkerGenerateTemplateProcessor">
+		<setting name="sourceDirectory" value="D:\code\simple"/>
+		<setting name="targetDirectory" value="D:\code\target"/>
+	</templateProcessor>
+
+	<settings>
+		<setting name="globalPackageName" value="info.xpanda.demo"/>
+	</settings>
+</configuration>
