@@ -86,7 +86,7 @@ public class FreemarkerGenerateTemplateProcessor implements GenerateTemplateProc
         return null;
     }
 
-    private File resolveTargetFile(Template template, Map<String, String> dataModel){
+    private File resolveTargetFile(Template template, Map<String, Object> dataModel){
         String fullPath = targetDirectory + File.separator + template.getName();
         fullPath = StringUtils.substringBeforeLast(fullPath, ".");
         String[] tags = StringUtils.substringsBetween(fullPath, "${", "}");
@@ -94,7 +94,7 @@ public class FreemarkerGenerateTemplateProcessor implements GenerateTemplateProc
             Set<String> setTag = new HashSet<String>(Arrays.asList(tags));
             for(String tag : setTag){
                 if(dataModel.containsKey(tag)){
-                    fullPath = StringUtils.replace(fullPath, "${" + tag + "}", dataModel.get(tag));
+                    fullPath = StringUtils.replace(fullPath, "${" + tag + "}", dataModel.get(tag).toString());
                 }
             }
         }

@@ -1,1 +1,24 @@
-[{"name":"Hello","text":"aa"},{"name":"World","text":"bb"}]
+[
+  {
+    "BigModule": "Finance",
+    "LittleModule": "finance",
+    "BigName": "Currency",
+    "LittleName": "currency",
+    "table": "finance_pub_currency_basic",
+    "columns": [{
+      "ColumnName": "currency_name",
+      "ColumnType": "String",
+      "FieldName": "currencyName",
+      "FieldType": "String",
+      "Description": "货币名称"
+    },
+      {
+        "ColumnName": "currency_code",
+        "ColumnType": "String",
+        "FieldName": "currencyCode",
+        "FieldType": "String",
+        "Description": "货币编号"
+      }
+    ]
+  }
+]
