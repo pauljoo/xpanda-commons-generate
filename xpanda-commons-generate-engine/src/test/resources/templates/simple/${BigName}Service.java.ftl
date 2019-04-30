@@ -1,7 +1,7 @@
 package info.xpanda.web.${LittleModule}.service;
 
-import info.xpanda.web.${LittleModule}.service.bo.${BigName}BO;
-import info.xpanda.web.${LittleModule}.service.bqo.${BigName}BQO;
+import info.xpanda.web.${LittleModule}.service.bo.${BigName}Bo;
+import info.xpanda.web.${LittleModule}.service.bqo.${BigName}Bqo;
 import info.xpanda.web.common.base.service.BaseService;
 
 import java.util.List;
@@ -14,43 +14,43 @@ import java.util.List;
 public interface ${BigName}Service extends BaseService {
     /**
      * 分页获取对象
-     * @param ${LittleName}BQO
+     * @param ${LittleName}Bqo
      * @return
      */
-    List<${BigName}BO> listByPage(${BigName}BQO ${LittleName}BQO);
+    List<${BigName}Bo> listByPage(${BigName}Bqo ${LittleName}Bqo);
 
     /**
      * 获取总数
-     * @param ${LittleName}BQO
+     * @param ${LittleName}Bqo
      * @return
      */
-    long countByPage(${BigName}BQO ${LittleName}BQO);
+    long countByPage(${BigName}Bqo ${LittleName}Bqo);
 
     /**
      * 查询对象
      * @param id
      * @return
      */
-    ${BigName}BO getById(Long id);
+    ${BigName}Bo getById(Long id);
 
     /**
      * 新增数据
-     * @param ${LittleName}BQO
+     * @param ${LittleName}Bqo
      * @return
      */
-    boolean add(${BigName}BQO ${LittleName}BQO);
+    Boolean add(${BigName}Bqo ${LittleName}Bqo);
 
     /**
      * 修改数据
-     * @param ${LittleName}BQO
+     * @param ${LittleName}Bqo
      * @return
      */
-    boolean edit(${BigName}BQO ${LittleName}BQO);
+    Boolean edit(${BigName}Bqo ${LittleName}Bqo);
 
     /**
      * 删除数据
-     * @param id
+     * @param ${LittleName}Bqo
      * @return
      */
-    boolean remove(${BigName}BQO ${LittleName}BQO);
+    Boolean remove(${BigName}Bqo ${LittleName}Bqo);
 }

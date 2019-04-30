@@ -12,7 +12,7 @@ import java.util.Date;
  * @since 20190216
  */
 @Data
-public class ${BigName}BO {
+public class ${BigName}Bo {
     private Long id;
 
 	private Date updateTime;

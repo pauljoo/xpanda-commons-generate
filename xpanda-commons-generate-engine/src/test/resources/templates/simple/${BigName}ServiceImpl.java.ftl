@@ -3,8 +3,8 @@ package info.xpanda.web.${LittleModule}.service.impl;
 import info.xpanda.web.${LittleModule}.dao.${BigName}Dao;
 import info.xpanda.web.${LittleModule}.dao.entity.${BigName}Entity;
 import info.xpanda.web.${LittleModule}.service.${BigName}Service;
-import info.xpanda.web.${LittleModule}.service.bo.${BigName}BO;
-import info.xpanda.web.${LittleModule}.service.bqo.${BigName}BQO;
+import info.xpanda.web.${LittleModule}.service.bo.${BigName}Bo;
+import info.xpanda.web.${LittleModule}.service.bqo.${BigName}Bqo;
 import info.xpanda.web.common.base.service.impl.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,51 +24,51 @@ public class ${BigName}ServiceImpl extends BaseServiceImpl implements ${BigName}
     private ${BigName}Dao ${LittleName}Dao;
 
     @Override
-    public List<${BigName}BO> listByPage(${BigName}BQO ${LittleName}BQO) {
-        List<${BigName}Entity> ${LittleName}EntityList = ${LittleName}Dao.listPage(${LittleName}BQO.toOffset(), ${LittleName}BQO.toLimit());
+    public List<${BigName}Bo> listByPage(${BigName}Bqo ${LittleName}Bqo) {
+        List<${BigName}Entity> ${LittleName}EntityList = ${LittleName}Dao.listPage(${LittleName}Bqo.toOffset(), ${LittleName}Bqo.toLimit());
         if(null == ${LittleName}EntityList){
             return null;
         }
-        List<${BigName}BO> ${LittleName}BOList = new ArrayList<>();
-        transformHelper.transform(${LittleName}EntityList, ${LittleName}BOList);
-        return ${LittleName}BOList;
+        List<${BigName}Bo> ${LittleName}BoList = new ArrayList<>();
+        transformHelper.transform(${LittleName}EntityList, ${LittleName}BoList);
+        return ${LittleName}BoList;
     }
 
     @Override
-    public long countByPage(${BigName}BQO ${LittleName}BQO) {
+    public long countByPage(${BigName}Bqo ${LittleName}Bqo) {
         return ${LittleName}Dao.countPage();
     }
 
     @Override
-    public ${BigName}BO getById(Long id) {
+    public ${BigName}Bo getById(Long id) {
         ${BigName}Entity entity = ${LittleName}Dao.getById(id);
-        return transformHelper.transform(entity, ${BigName}BO.class);
+        return transformHelper.transform(entity, ${BigName}Bo.class);
     }
 
     @Override
     @Transactional
-    public boolean add(${BigName}BQO ${LittleName}BQO) {
-        ${BigName}Entity entity = transformHelper.transform(${LittleName}BQO, ${BigName}Entity.class);
-        entity.setCreater(${LittleName}BQO.getOperator());
-        entity.setUpdater(${LittleName}BQO.getOperator());
+    public Boolean add(${BigName}Bqo ${LittleName}Bqo) {
+        ${BigName}Entity entity = transformHelper.transform(${LittleName}Bqo, ${BigName}Entity.class);
+        entity.setCreater(${LittleName}Bqo.getOperator());
+        entity.setUpdater(${LittleName}Bqo.getOperator());
         int result = ${LittleName}Dao.insert(entity);
         return result > 0;
     }
 
     @Override
     @Transactional
-    public boolean edit(${BigName}BQO ${LittleName}BQO) {
-        ${BigName}Entity entity = transformHelper.transform(${LittleName}BQO, ${BigName}Entity.class);
-        entity.setUpdater(${LittleName}BQO.getOperator());
+    public Boolean edit(${BigName}Bqo ${LittleName}Bqo) {
+        ${BigName}Entity entity = transformHelper.transform(${LittleName}Bqo, ${BigName}Entity.class);
+        entity.setUpdater(${LittleName}Bqo.getOperator());
         int result = ${LittleName}Dao.update(entity);
         return result > 0;
     }
 
     @Override
     @Transactional
-    public boolean remove(${BigName}BQO ${LittleName}BQO) {
-        ${BigName}Entity entity = transformHelper.transform(${LittleName}BQO, ${BigName}Entity.class);
-        entity.setUpdater(${LittleName}BQO.getOperator());
+    public Boolean remove(${BigName}Bqo ${LittleName}Bqo) {
+        ${BigName}Entity entity = transformHelper.transform(${LittleName}Bqo, ${BigName}Entity.class);
+        entity.setUpdater(${LittleName}Bqo.getOperator());
         int result = ${LittleName}Dao.delete(entity);
         return result > 0;
     }

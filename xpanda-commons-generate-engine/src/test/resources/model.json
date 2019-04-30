@@ -2,22 +2,80 @@
   {
     "BigModule": "Finance",
     "LittleModule": "finance",
-    "BigName": "Currency",
-    "LittleName": "currency",
-    "table": "finance_pub_currency_basic",
+    "BigName": "StockDaily",
+    "LittleName": "stockDaily",
+    "table": "finance_stock_daily",
     "columns": [{
-      "ColumnName": "currency_name",
-      "ColumnType": "String",
-      "FieldName": "currencyName",
-      "FieldType": "String",
-      "Description": "货币名称"
+      "ColumnName": "stock_basic_id",
+      "ColumnType": "Long",
+      "FieldName": "stockBasicId",
+      "FieldType": "Long",
+      "Description": "股票代码"
     },
       {
-        "ColumnName": "currency_code",
-        "ColumnType": "String",
-        "FieldName": "currencyCode",
-        "FieldType": "String",
-        "Description": "货币编号"
+        "ColumnName": "trade_date",
+        "ColumnType": "Date",
+        "FieldName": "tradeDate",
+        "FieldType": "Date",
+        "Description": "交易日期"
+      },{
+        "ColumnName": "daily_open",
+        "ColumnType": "Double",
+        "FieldName": "dailyOpen",
+        "FieldType": "Double",
+        "Description": "开盘价"
+      },
+      {
+        "ColumnName": "daily_high",
+        "ColumnType": "Double",
+        "FieldName": "dailyHigh",
+        "FieldType": "Double",
+        "Description": "最高价"
+      },{
+        "ColumnName": "daily_low",
+        "ColumnType": "Double",
+        "FieldName": "dailyLow",
+        "FieldType": "Double",
+        "Description": "最低价"
+      },
+      {
+        "ColumnName": "daily_close",
+        "ColumnType": "Double",
+        "FieldName": "dailyClose",
+        "FieldType": "Double",
+        "Description": "收盘价"
+      },{
+        "ColumnName": "pre_daily_close",
+        "ColumnType": "Double",
+        "FieldName": "preDailyClose",
+        "FieldType": "Double",
+        "Description": "昨收价"
+      },
+      {
+        "ColumnName": "daily_change",
+        "ColumnType": "Double",
+        "FieldName": "dailyChange",
+        "FieldType": "Double",
+        "Description": "涨跌额"
+      },{
+        "ColumnName": "percent_daily_change",
+        "ColumnType": "Double",
+        "FieldName": "percentDailyChange",
+        "FieldType": "Double",
+        "Description": "涨跌幅"
+      },
+      {
+        "ColumnName": "daily_vol",
+        "ColumnType": "Double",
+        "FieldName": "dailyVol",
+        "FieldType": "Double",
+        "Description": "成交量 （手）"
+      },{
+        "ColumnName": "daily_amount",
+        "ColumnType": "Double",
+        "FieldName": "dailyAmount",
+        "FieldType": "Double",
+        "Description": "成交额 （千元）"
       }
     ]
   }

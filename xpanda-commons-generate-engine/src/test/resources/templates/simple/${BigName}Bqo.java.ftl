@@ -11,7 +11,7 @@ import lombok.Data;
  * @since 20190216
  */
 @Data
-public class ${BigName}BQO extends PageQueryBQO {
+public class ${BigName}Bqo extends PageQueryBQO {
     private Long id;
 
 	<#list columns as column>
