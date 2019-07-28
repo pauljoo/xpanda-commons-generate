@@ -1,0 +1,87 @@
+[
+  {
+    "BigName": "IndexDaily",
+    "LittleName": "indexDaily",
+    "table": "tushare_index_daily",
+    "TableDescription": "指数日线行情",
+    "ApiName": "index_daily",
+    "columns": [{
+      "ColumnName": "ts_code",
+      "ColumnType": "String",
+      "FieldName": "tsCode",
+      "FieldType": "String",
+      "Description": "TS代码"
+    },
+      {
+        "ColumnName": "trade_date",
+        "ColumnType": "String",
+        "FieldName": "tradeDate",
+        "FieldType": "String",
+        "Description": "交易日"
+      },
+      {
+        "ColumnName": "close",
+        "ColumnType": "String",
+        "FieldName": "close",
+        "FieldType": "String",
+        "Description": "收盘点位"
+      },
+      {
+        "ColumnName": "open",
+        "ColumnType": "String",
+        "FieldName": "open",
+        "FieldType": "String",
+        "Description": "开盘点位"
+      },
+      {
+        "ColumnName": "high",
+        "ColumnType": "String",
+        "FieldName": "high",
+        "FieldType": "String",
+        "Description": "最高点位"
+      },
+      {
+        "ColumnName": "low",
+        "ColumnType": "String",
+        "FieldName": "low",
+        "FieldType": "String",
+        "Description": "最低点位"
+      },
+      {
+        "ColumnName": "pre_close",
+        "ColumnType": "String",
+        "FieldName": "preClose",
+        "FieldType": "String",
+        "Description": "昨日收盘点"
+      },
+      {
+        "ColumnName": "change",
+        "ColumnType": "String",
+        "FieldName": "change",
+        "FieldType": "String",
+        "Description": "涨跌点"
+      },
+      {
+        "ColumnName": "pct_chg",
+        "ColumnType": "String",
+        "FieldName": "pctChg",
+        "FieldType": "String",
+        "Description": "涨跌幅（%）"
+      },
+      {
+        "ColumnName": "vol",
+        "ColumnType": "String",
+        "FieldName": "vol",
+        "FieldType": "String",
+        "Description": "成交量（手）"
+      },
+      {
+        "ColumnName": "amount",
+        "ColumnType": "String",
+        "FieldName": "amount",
+        "FieldType": "String",
+        "Description": "成交额（千元）"
+      }
+    ]
+  }
+]
