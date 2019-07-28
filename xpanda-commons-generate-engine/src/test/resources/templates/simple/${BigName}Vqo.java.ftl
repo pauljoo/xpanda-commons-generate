@@ -1,6 +1,6 @@
 package info.xpanda.web.admin.controller.${LittleModule}.vqo;
 
-import info.xpanda.web.common.vqo.PageQueryVQO;
+import info.xpanda.web.common.vqo.PageQueryVqo;
 import lombok.Data;
 
 /**
@@ -11,7 +11,7 @@ import lombok.Data;
  * @since 20190216
  */
 @Data
-public class ${BigName}VQO extends PageQueryVQO {
+public class ${BigName}Vqo extends PageQueryVqo {
     private Long id;
 
     <#list columns as column>

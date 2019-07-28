@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ${BigName}VO {
+public class ${BigName}Vo {
     private Long id;
 
     private Date updateTime;

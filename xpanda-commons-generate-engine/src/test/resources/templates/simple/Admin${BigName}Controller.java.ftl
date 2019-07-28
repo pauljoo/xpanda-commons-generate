@@ -1,15 +1,15 @@
 package info.xpanda.web.admin.controller.${LittleModule};
 
-import info.xpanda.web.admin.controller.${LittleModule}.vo.${BigName}VO;
-import info.xpanda.web.admin.controller.${LittleModule}.vqo.${BigName}VQO;
+import info.xpanda.web.admin.controller.${LittleModule}.vo.${BigName}Vo;
+import info.xpanda.web.admin.controller.${LittleModule}.vqo.${BigName}Vqo;
 import info.xpanda.web.${LittleModule}.service.${BigName}Service;
-import info.xpanda.web.${LittleModule}.service.bo.${BigName}BO;
-import info.xpanda.web.${LittleModule}.service.bqo.${BigName}BQO;
+import info.xpanda.web.${LittleModule}.service.bo.${BigName}Bo;
+import info.xpanda.web.${LittleModule}.service.bqo.${BigName}Bqo;
 import info.xpanda.web.common.base.controller.BaseController;
 
 import info.xpanda.web.common.security.XpandaUser;
-import info.xpanda.web.common.vo.JsonResultVO;
-import info.xpanda.web.common.vo.PageResultVO;
+import info.xpanda.web.common.vo.JsonResultVo;
+import info.xpanda.web.common.vo.PageResultVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,11 +45,11 @@ public class Admin${BigName}Controller extends BaseController{
      */
     @RequestMapping("/viewPage")
     public ModelAndView viewPage(Long id){
-        ${BigName}BO ${LittleName}BO = ${LittleName}Service.getById(id);
-        ${BigName}VO ${LittleName}VO = transformHelper.transform(${LittleName}BO, ${BigName}VO.class);
+        ${BigName}Bo ${LittleName}Bo = ${LittleName}Service.getById(id);
+        ${BigName}Vo ${LittleName}Vo = transformHelper.transform(${LittleName}Bo, ${BigName}Vo.class);
 
         ModelAndView modelAndView = new ModelAndView("/admin/${LittleModule}/${LittleName}/viewPage");
-        modelAndView.addObject("${LittleName}VO",${LittleName}VO);
+        modelAndView.addObject("${LittleName}Vo",${LittleName}Vo);
 
         return modelAndView;
     }
@@ -69,83 +69,83 @@ public class Admin${BigName}Controller extends BaseController{
      */
     @RequestMapping("/editPage")
     public ModelAndView editPage(Long id){
-        ${BigName}BO ${LittleName}BO = ${LittleName}Service.getById(id);
-        ${BigName}VO ${LittleName}VO = transformHelper.transform(${LittleName}BO, ${BigName}VO.class);
+        ${BigName}Bo ${LittleName}Bo = ${LittleName}Service.getById(id);
+        ${BigName}Vo ${LittleName}Vo = transformHelper.transform(${LittleName}Bo, ${BigName}Vo.class);
 
         ModelAndView modelAndView = new ModelAndView("/admin/${LittleModule}/${LittleName}/editPage");
-        modelAndView.addObject("${LittleName}VO",${LittleName}VO);
+        modelAndView.addObject("${LittleName}Vo",${LittleName}Vo);
 
         return modelAndView;
     }
 
     /**
      * 查询对象列表
-     * @param ${LittleName}VQO 查询参数
+     * @param ${LittleName}Vqo 查询参数
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
-    public JsonResultVO list(${BigName}VQO ${LittleName}VQO){
-        ${BigName}BQO ${LittleName}BQO = transformHelper.transform(${LittleName}VQO, ${BigName}BQO.class);
-        Long total = ${LittleName}Service.countByPage(${LittleName}BQO);
-        List<${BigName}BO> ${LittleName}BOList = ${LittleName}Service.listByPage(${LittleName}BQO);
-        List<${BigName}VO> ${LittleName}VOList = new ArrayList<>();
-        transformHelper.transform(${LittleName}BOList, ${LittleName}VOList);
-        PageResultVO<${BigName}VO> pageResultVO = new PageResultVO<>(total, ${LittleName}VOList);
-        JsonResultVO result = JsonResultVO.buildSuccess();
-        result.setData(pageResultVO);
+    public JsonResultVo list(${BigName}Vqo ${LittleName}Vqo){
+        ${BigName}Bqo ${LittleName}Bqo = transformHelper.transform(${LittleName}Vqo, ${BigName}Bqo.class);
+        Long total = ${LittleName}Service.countByPage(${LittleName}Bqo);
+        List<${BigName}Bo> ${LittleName}BoList = ${LittleName}Service.listByPage(${LittleName}Bqo);
+        List<${BigName}Vo> ${LittleName}VoList = new ArrayList<>();
+        transformHelper.transform(${LittleName}BoList, ${LittleName}VoList);
+        PageResultVo<${BigName}Vo> pageResultVo = new PageResultVo<>(total, ${LittleName}VoList);
+        JsonResultVo result = JsonResultVo.buildSuccess();
+        result.setData(pageResultVo);
         return result;
     }
 
     /**
      * 新增操作
-     * @param ${LittleName}VQO 操作对象
+     * @param ${LittleName}Vqo 操作对象
      * @return
      */
     @RequestMapping("/add")
     @ResponseBody
-    public JsonResultVO add(${BigName}VQO ${LittleName}VQO){
-        ${BigName}BQO ${LittleName}BQO = transformHelper.transform(${LittleName}VQO, ${BigName}BQO.class);
+    public JsonResultVo add(${BigName}Vqo ${LittleName}Vqo){
+        ${BigName}Bqo ${LittleName}Bqo = transformHelper.transform(${LittleName}Vqo, ${BigName}Bqo.class);
 
         XpandaUser user = getUserDetail();
-        ${LittleName}BQO.setOperator(user.getId());
+        ${LittleName}Bqo.setOperator(user.getId());
 
-        boolean result = ${LittleName}Service.add(${LittleName}BQO);
-        return JsonResultVO.buildSuccess();
+        Boolean result = ${LittleName}Service.add(${LittleName}Bqo);
+        return JsonResultVo.buildSuccess();
     }
 
     /**
      * 编辑操作
-     * @param ${LittleName}VQO 操作对象
+     * @param ${LittleName}Vqo 操作对象
      * @return
      */
     @RequestMapping("/edit")
     @ResponseBody
-    public JsonResultVO edit(${BigName}VQO ${LittleName}VQO){
-        ${BigName}BQO ${LittleName}BQO = transformHelper.transform(${LittleName}VQO, ${BigName}BQO.class);
+    public JsonResultVo edit(${BigName}Vqo ${LittleName}Vqo){
+        ${BigName}Bqo ${LittleName}Bqo = transformHelper.transform(${LittleName}Vqo, ${BigName}Bqo.class);
 
         XpandaUser user = getUserDetail();
-        ${LittleName}BQO.setOperator(user.getId());
+        ${LittleName}Bqo.setOperator(user.getId());
 
-        boolean result = ${LittleName}Service.edit(${LittleName}BQO);
+        Boolean result = ${LittleName}Service.edit(${LittleName}Bqo);
 
-        return JsonResultVO.buildSuccess();
+        return JsonResultVo.buildSuccess();
     }
 
     /**
      * 删除操作
-     * @param ${LittleName}VQO 操作对象
+     * @param ${LittleName}Vqo 操作对象
      * @return
      */
     @RequestMapping("/remove")
     @ResponseBody
-    public JsonResultVO remove(${BigName}VQO ${LittleName}VQO){
-        ${BigName}BQO ${LittleName}BQO = transformHelper.transform(${LittleName}VQO, ${BigName}BQO.class);
+    public JsonResultVo remove(${BigName}Vqo ${LittleName}Vqo){
+        ${BigName}Bqo ${LittleName}Bqo = transformHelper.transform(${LittleName}Vqo, ${BigName}Bqo.class);
 
         XpandaUser user = getUserDetail();
-        ${LittleName}BQO.setOperator(user.getId());
+        ${LittleName}Bqo.setOperator(user.getId());
 
-        boolean result = ${LittleName}Service.remove(${LittleName}BQO);
-        return JsonResultVO.buildSuccess();
+        Boolean result = ${LittleName}Service.remove(${LittleName}Bqo);
+        return JsonResultVo.buildSuccess();
     }
 }
